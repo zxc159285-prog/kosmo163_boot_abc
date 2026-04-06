@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace에는 FQDN을 적어야한다. -->
+  <!-- FQDN(Fully Qualified Domain Name) : 전체 구조화된 도메인 이름, 사용할 DAO의 클래스 명을 패키지까지 모두 작성해야한다. -->
+  <mapper namespace="com.google.app.departments.DepartmentDAO">
+  	<!-- Query 태그 작성(;, 세미콜론은 생략) -->
+  	<!-- id : 통상적으로 DAO에서 사용할 메서드 명을 ID로 작성한다. -->
+  	<!-- 컬럼명과 resulttype의 bean(객체) setter 이름이 같은 걸 찾아서 대입 -->
+  	<select id="list" resultType="com.google.app.departments.DepartmentDTO">
+  		SELECT * FROM TB_DEPARTMENT
+  	</select>
+  	
+  	<select id="detail" parameterType="java.lang.String" resultType="com.google.app.departments.DepartmentDTO">
+  		SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO = #{num}
+  	</select>
+  </mapper>
