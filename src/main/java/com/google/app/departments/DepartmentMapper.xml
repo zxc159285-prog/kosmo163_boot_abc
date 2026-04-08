@@ -6,31 +6,31 @@
   
   <!-- namespace에는 FQDN을 적어야한다. -->
   <!-- FQDN(Fully Qualified Domain Name) : 전체 구조화된 도메인 이름, 사용할 DAO의 클래스 명을 패키지까지 모두 작성해야한다. -->
-  <mapper namespace="com.google.app.departments.DepartmentDAO">
+  <mapper namespace="com.google.app.departments.DepartmentMapper">
   	<!-- Query 태그 작성(;, 세미콜론은 생략) -->
   	<!-- id : 통상적으로 DAO에서 사용할 메서드 명을 ID로 작성한다. -->
   	<!-- 컬럼명과 resulttype의 bean(객체) setter 이름이 같은 걸 찾아서 대입 -->
-  	<select id="list" resultType="com.google.app.departments.DepartmentDTO">
+  	<select id="list" resultType="DepartmentDTO">
   		SELECT * FROM TB_DEPARTMENT
   	</select>
   	
-  	<select id="detail" parameterType="java.lang.String" resultType="com.google.app.departments.DepartmentDTO">
+  	<select id="detail" parameterType="DepartmentDTO" resultType="DepartmentDTO">
   		<!-- String, primitive type은 DAO에 보낸 변수명을 #{변수명}으로 작성한다. -->
-  		SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO = #{num}
+  		SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO = #{departmentNo}
   	</select>
   	
   	<!-- insert / delete / update는 resulttype이 없다. 결과물은 숫자(int)로 리턴을 한다.-->
-  	<insert id="create" parameterType="com.google.app.departments.DepartmentDTO">
+  	<insert id="create" parameterType="DepartmentDTO">
   		<!-- Bean(객체)의 getter의 이름을 #{}에 작성한다. -->
   		INSERT INTO TB_DEPARTMENT 
 		VALUES(#{departmentNo}, #{departmentName}, #{category}, #{openYn}, #{capacity})
   	</insert>
   	
-  	<delete id="delete" parameterType="com.google.app.departments.DepartmentDTO">
+  	<delete id="delete" parameterType="DepartmentDTO">
   		DELETE TB_DEPARTMENT WHERE DEPARTMENT_NO = #{departmentNo}
   	</delete>
   	
-  	<update id="update" parameterType="com.google.app.departments.DepartmentDTO">
+  	<update id="update" parameterType="DepartmentDTO">
   		UPDATE TB_DEPARTMENT 
   		SET DEPARTMENT_NAME= #{departmentName}, CATEGORY=#{category}, OPEN_YN=#{openYn}, CAPACITY=#{capacity}
   		WHERE DEPARTMENT_NO=#{departmentNo} 
