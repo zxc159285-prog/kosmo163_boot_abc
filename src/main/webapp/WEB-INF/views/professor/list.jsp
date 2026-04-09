@@ -41,9 +41,9 @@
                     		<tbody>
 		                    	<c:forEach items="${list}" var="d">
 		                    		<tr>
-		                    			<td><a href="./detail?professorNo=${d.professorNo}">${d.professorNO}</a></td>
+		                    			<td><a href="./detail?professorNo=${d.professorNo}">${d.professorNo}</a></td>
 		                    			<td>${d.professorName}</td>	                    			
-		                    				<td>${d.departmentNo}</td>
+		                    			<td>${d.departmentNo}</td>
 		                    	
 		                    		</tr>
 		                    	</c:forEach>
