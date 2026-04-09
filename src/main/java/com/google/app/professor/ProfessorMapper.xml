@@ -24,8 +24,7 @@
 		SET 
 		PROFESSOR_NAME=#{professorName},
 		PROFESSOR_SSN=#{professorSsn},
-		PROFESSOR_ADDRESS=#{professorAddress},
-		DEPARTMENT_NO=#{departmentNo}
+		PROFESSOR_ADDRESS=#{professorAddress}
 		WHERE
 		PROFESSOR_NO=#{professorNo}
 	</update>
